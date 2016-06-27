@@ -49,7 +49,7 @@ class MyDateTime < DateTime
 
 		@prop_rc_year = 0
 
-		while @rc_ajd >= 365
+		while @rc_ajd >= MyDateTime::year_length(@prop_rc_year)
 			@rc_ajd -= MyDateTime::year_length(@prop_rc_year)
 			@prop_rc_year += 1
 		end
