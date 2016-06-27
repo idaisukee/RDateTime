@@ -37,7 +37,7 @@ class MyDateTime < DateTime
 
 	def rc_ajd
 
-		self - RC_EPOCH
+		self.ajd - RC_EPOCH.ajd
 
 	end
 
