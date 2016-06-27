@@ -23,7 +23,7 @@ class MyDateTime < DateTime
 
 
 
-	def year_length(prop_rc_year)
+	def self::year_length(prop_rc_year)
 
 		@prop_rc_year = prop_rc_year
 
@@ -35,6 +35,11 @@ class MyDateTime < DateTime
 
 	end
 
+	def rc_ajd
+
+		self - RC_EPOCH
+
+	end
 
 
 	def self.from_ajd(ajd)
