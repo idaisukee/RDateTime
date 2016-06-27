@@ -42,6 +42,24 @@ class MyDateTime < DateTime
 	end
 
 
+
+	def prop_rc_year_day
+
+		@rc_ajd = self.rc_ajd
+
+		@prop_rc_year = 0
+
+		while @rc_ajd >= 365
+			@rc_ajd -= MyDateTime::year_length(@prop_rc_year)
+			@prop_rc_year += 1
+		end
+
+		[ @prop_rc_year, @rc_ajd ]
+
+	end
+
+
+
 	def self.from_ajd(ajd)
 		@ajd = ajd
 		@jd = @ajd + Rational(1, 2)
