@@ -92,6 +92,7 @@ class MyDateTime < DateTime
 
 
 	def self.from_ajd(ajd)
+		# this method does not work.
 		@ajd = ajd
 		@jd = @ajd + Rational(1, 2)
 		self.jd(@jd)
