@@ -60,6 +60,37 @@ class MyDateTime < DateTime
 
 
 
+	def day_ratio
+
+		@rc_ajd = self.rc_ajd
+
+		@prop_rc_year = self.prop_rc_year_day[0]
+		@prop_rc_day = self.prop_rc_year_day[1]
+		@year_length = MyDateTime::year_length(@prop_rc_year)
+
+		@day_ratio = @prop_rc_day / @year_length
+
+	end
+
+
+
+	def day_ratio_in_season
+
+		@rc_ajd = self.rc_ajd
+
+		@prop_rc_year = self.prop_rc_year_day[0]
+		@prop_rc_day = self.prop_rc_year_day[1]
+		
+		@season = ( self.day_ratio * 4 ).floor
+
+		@day_per_season = MyDateTime::year_length(@prop_rc_year) / 4.0
+		
+		@prop_rc_day_in_season = @prop_rc_day - @day_per_season * @season
+		@day_ratio_in_season = Rational(@prop_rc_day_in_season, @day_per_season)
+	end
+
+
+
 	def self.from_ajd(ajd)
 		@ajd = ajd
 		@jd = @ajd + Rational(1, 2)
