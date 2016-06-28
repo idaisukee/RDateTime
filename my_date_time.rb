@@ -82,6 +82,22 @@ end
 
 
 
+def self::prop_rc_year
+
+	@prop_rc_year = self.prop_rc_year_day[0]
+
+end
+
+
+
+def self::prop_rc_day
+
+	@prop_rc_year = self.prop_rc_year_day[1]
+
+end
+
+
+
 def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
 	# this method seems to produce a displacement of 1 day.
 	@prop_rc_year = prop_rc_year
