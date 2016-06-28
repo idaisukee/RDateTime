@@ -60,7 +60,7 @@ class MyDateTime < DateTime
 
 
 
-	def day_ratio
+	def year_ratio
 
 		@rc_ajd = self.rc_ajd
 
