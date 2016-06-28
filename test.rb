@@ -26,3 +26,9 @@ q = MyDateTime::from_prop_rc(223, 9, 9, 1, 52, 10)
 p q.to_f
 r = MyDateTime::from_prop_rc(10, 0, 0, 1, 52, 10)
 p r.to_f
+
+p m.prop_rc_year_day
+p m.prop_rc_year_day[1].to_f
+p (m.day_ratio * 4 ).to_f
+p m.day_ratio_in_season.to_f
+puts "#{m.prop_rc_year_day[0]}:#{m.prop_rc_year_day[1].to_f }"

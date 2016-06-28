@@ -41,6 +41,7 @@ class TC < Test::Unit::TestCase
 		assert_equal([3, 0], ( m + 365 + 365 + 365).prop_rc_year_day)
 		assert_equal([3, 365], ( m + 365 + 365 + 365 + 365).prop_rc_year_day)
 		assert_equal([4, 0], ( m + 365 + 365 + 365 + 365 + 1).prop_rc_year_day)
+		assert_equal([4, 1], ( m + 365 + 365 + 365 + 365 + 1 + 1).prop_rc_year_day)
 	end
 
 end
