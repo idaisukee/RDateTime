@@ -28,6 +28,15 @@ class TC < Test::Unit::TestCase
 
 
 
+	def test_season_ratio
+
+		m = MyDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
+		assert_equal(3, m.season_ratio.floor)
+
+	end
+
+
+
 	def test_prop_rc_year
 		m = MyDateTime::RC_EPOCH
 		
