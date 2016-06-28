@@ -74,6 +74,14 @@ class MyDateTime < DateTime
 
 
 
+def season_ratio
+
+	self.year_ratio * 4
+
+end
+
+
+
 def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
 	# this method seems to produce a displacement of 1 day.
 	@prop_rc_year = prop_rc_year
