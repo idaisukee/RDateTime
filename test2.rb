@@ -37,7 +37,7 @@ class TC < Test::Unit::TestCase
 
 
 
-	def test_prop_rc_year
+	def test_prop_rc_year_day
 		m = MyDateTime::RC_EPOCH
 		
 		assert_equal(0, m.prop_rc_year_day[0])
