@@ -68,8 +68,8 @@ class RDateTime < DateTime
 
 		@rc_ajd = self.rc_ajd
 
-		@prop_rc_year = self.prop_rc_year_day[0]
-		@prop_rc_day = self.prop_rc_year_day[1]
+		@prop_rc_year = self.prop_rc_year
+		@prop_rc_day = self.prop_rc_day
 		@year_length = RDateTime::year_length(@prop_rc_year)
 
 		@day_ratio = @prop_rc_day / @year_length
