@@ -123,7 +123,7 @@ def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min
 	@rc_ajd += Rational(@rc_min, 1000)
 	@rc_ajd += Rational(@rc_sec, 100000)
 
-	@rc_ajd
+	self::from_rc_ajd(@rc_ajd)
 end
 
 
@@ -131,9 +131,19 @@ end
 	def self.from_ajd(ajd)
 		# this method does not work.
 		@ajd = ajd
-		@jd = @ajd + Rational(1, 2)
+		@jd = @ajd + Rational(1, 2) 
 		self.jd(@jd)
 	end
+
+
+
+	def self::from_rc_ajd(rc_ajd)
+		@rc_ajd = rc_ajd
+		@ajd = self::RC_EPOCH.ajd + @rc_ajd
+		self::from_ajd(@ajd)
+	end
+
+
 
 	def to_jd
 		@day = self.jd
