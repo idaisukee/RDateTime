@@ -1,7 +1,5 @@
 require 'date'
-
-
-
+require './float.rb'
 
 
 
