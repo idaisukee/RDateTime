@@ -86,7 +86,7 @@ end
 
 
 
-def self::prop_rc_year
+def prop_rc_year
 
 	@prop_rc_year = self.prop_rc_year_day[0]
 
@@ -94,7 +94,7 @@ end
 
 
 
-def self::prop_rc_day
+def prop_rc_day
 
 	@prop_rc_year = self.prop_rc_year_day[1]
 
