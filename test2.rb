@@ -55,5 +55,9 @@ class TC < Test::Unit::TestCase
 
 
 
-
+	def test_from_prop_rc
+		m = RDateTime.new(2016, 6, 29, 8, 0, 0, Rational(9, 24))
+		n = RDateTime.from_prop_rc(223, 9, 11, 0, 0, 0)
+		assert_equal(m, n)
+	end
 end

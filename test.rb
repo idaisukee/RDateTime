@@ -21,9 +21,8 @@ p n.prop_rc_year_day
 
 
 q = RDateTime::from_prop_rc(223, 9, 9, 1, 52, 10)
-p q.to_f
+
 r = RDateTime::from_prop_rc(10, 0, 0, 1, 52, 10)
-p r.to_f
 
 p m.prop_rc_year_day
 p m.prop_rc_year_day[1].to_f
