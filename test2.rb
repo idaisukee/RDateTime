@@ -28,6 +28,22 @@ class TC < Test::Unit::TestCase
 
 
 
+	def test_from_ajd
+		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
+		n = RDateTime::from_ajd(m.ajd)
+		assert_equal(m, n)
+	end
+
+
+
+	def test_from_jd
+		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
+		jda = m.to_jd
+		assert_equal(m, RDateTime::from_jd(jda))
+	end
+
+
+
 	def test_season_ratio
 
 		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))

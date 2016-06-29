@@ -154,5 +154,13 @@ end
 		[@jd, @offset]
 	end
 
+
+
+	def self::from_jd(jd_array)
+		@jd = jd_array[0]
+		@offset = jd_array[1]
+		@ajd = @jd - Rational(1, 2) - @offset
+		self.from_ajd(@ajd)
+	end
 end
 
