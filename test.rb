@@ -18,9 +18,6 @@ p MyDateTime::year_length(399)
 p m.prop_rc_year_day
 p n.prop_rc_year_day
 
-p m.day_ratio.to_f
-p m.day_ratio_in_season.to_f
-p n.day_ratio_in_season.to_f
 
 q = MyDateTime::from_prop_rc(223, 9, 9, 1, 52, 10)
 p q.to_f
