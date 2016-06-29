@@ -2,13 +2,6 @@ require 'date'
 
 
 
-class Float
-	def e_floor(int = 0)
-		@int = int
-		fl = ( self * (10 ** @int)).floor
-		fl * (10 ** (- @int))
-	end
-end
 
 
 
