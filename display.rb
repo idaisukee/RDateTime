@@ -1,5 +1,6 @@
-require './r_date_time.rb'
-require './float.rb'
+require File.expand_path('../r_date_time.rb',  __FILE__)
+require File.expand_path('../float.rb',  __FILE__)
+
 
 
 m = RDateTime.now

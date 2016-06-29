@@ -1,5 +1,5 @@
-require './r_date_time.rb'
-require './float.rb'
+require File.expand_path('../r_date_time.rb',  __FILE__)
+require File.expand_path('../float.rb',  __FILE__)
 
 m = RDateTime.now
 
@@ -34,3 +34,8 @@ puts "#{m.prop_rc_year_day[0]}:#{m.prop_rc_year_day[1].to_f }"
 p 1.33.class
 p 1.23456.e_floor
 p 1.23456.e_floor(3).to_f
+
+p File.expand_path('../float.rb', __FILE__)
+p m.year_ratio.to_f
+
+p m.class::RC_EPOCH

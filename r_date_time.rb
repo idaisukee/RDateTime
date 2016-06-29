@@ -1,5 +1,5 @@
 require 'date'
-require './float.rb'
+require File.expand_path('../float.rb', __FILE__)
 
 
 

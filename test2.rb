@@ -1,5 +1,5 @@
 require 'test/unit'
-require './r_date_time.rb'
+require File.expand_path('../r_date_time.rb',  __FILE__)
 
 class TC < Test::Unit::TestCase
 

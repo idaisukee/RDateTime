@@ -1,5 +1,5 @@
 require 'test/unit'
-require './float.rb'
+require File.expand_path('../float.rb',  __FILE__)
 
 class TC < Test::Unit::TestCase
 	def test_e_floor
