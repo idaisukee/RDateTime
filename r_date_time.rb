@@ -3,7 +3,7 @@ require './float.rb'
 
 
 
-class MyDateTime < DateTime
+class RDateTime < DateTime
 
 	RC_EPOCH = self.new(1792, 9, 22, 0, 0, 0, Rational(1, 24))
 
@@ -53,8 +53,8 @@ class MyDateTime < DateTime
 
 		@prop_rc_year = 0
 
-		while @rc_ajd >= MyDateTime::year_length(@prop_rc_year)
-			@rc_ajd -= MyDateTime::year_length(@prop_rc_year)
+		while @rc_ajd >= RDateTime::year_length(@prop_rc_year)
+			@rc_ajd -= RDateTime::year_length(@prop_rc_year)
 			@prop_rc_year += 1
 		end
 
@@ -70,7 +70,7 @@ class MyDateTime < DateTime
 
 		@prop_rc_year = self.prop_rc_year_day[0]
 		@prop_rc_day = self.prop_rc_year_day[1]
-		@year_length = MyDateTime::year_length(@prop_rc_year)
+		@year_length = RDateTime::year_length(@prop_rc_year)
 
 		@day_ratio = @prop_rc_day / @year_length
 
@@ -113,7 +113,7 @@ def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min
 
 	@rc_ajd = 0
 	while @prop_rc_year >= 1
-		@rc_ajd += MyDateTime::year_length(@prop_rc_year)
+		@rc_ajd += RDateTime::year_length(@prop_rc_year)
 		@prop_rc_year -= 1
 	end
 
