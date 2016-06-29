@@ -1,4 +1,5 @@
 require './my_date_time.rb'
+require './float.rb'
 
 m = MyDateTime.now
 
@@ -26,6 +27,10 @@ p r.to_f
 
 p m.prop_rc_year_day
 p m.prop_rc_year_day[1].to_f
-p (m.day_ratio * 4 ).to_f
-p m.day_ratio_in_season.to_f
+
+
 puts "#{m.prop_rc_year_day[0]}:#{m.prop_rc_year_day[1].to_f }"
+
+p 1.33.class
+p 1.23456.e_floor
+p 1.23456.e_floor(3).to_f
