@@ -60,4 +60,14 @@ class TC < Test::Unit::TestCase
 		n = RDateTime.from_prop_rc(223, 9, 11, 0, 0, 0)
 		assert_equal(m, n)
 	end
+
+
+
+	def test_to_jd
+		m = RDateTime.new(2016, 6, 29, 8, 0, 0, Rational(9, 24))
+		j = m.to_jd[0].floor
+		o = m.to_jd[1]
+		assert_equal(o, Rational(9, 24))
+		assert_equal(j, m.jd)
+	end
 end
