@@ -1,4 +1,17 @@
 require 'date'
+
+
+
+class Float
+	def e_floor(int = 0)
+		@int = int
+		fl = ( self * (10 ** @int)).floor
+		fl * (10 ** (- @int))
+	end
+end
+
+
+
 class MyDateTime < DateTime
 
 	RC_EPOCH = self.new(1792, 9, 22, 0, 0, 0, Rational(1, 24))
