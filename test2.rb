@@ -40,6 +40,15 @@ class TC < Test::Unit::TestCase
 		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
 		jda = m.to_jd
 		assert_equal(m, RDateTime::from_jd(jda))
+
+		o = RDateTime.jd(0)
+		p = RDateTime.new(-4712, 1, 1, 0, 0, 0, Rational(0, 24))
+		assert_equal(m, n)
+
+		q = RDateTime.from_jd([0, Rational(0, 24)])
+		assert_equal(o, q)
+
+
 	end
 
 
@@ -93,8 +102,5 @@ class TC < Test::Unit::TestCase
 		m = RDateTime.jd(0)
 		n = RDateTime.new(-4712, 1, 1, 0, 0, 0, Rational(0, 24))
 		assert_equal(m, n)
-
-		l = RDateTime.from_jd([0, Rational(0, 24)])
-		assert_equal(m, l)
 	end
 end
