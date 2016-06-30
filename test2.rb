@@ -37,6 +37,11 @@ class TC < Test::Unit::TestCase
 		s = RDateTime::from_ajd(u.ajd)
 		assert_equal(u, s)
 
+		p = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(5, 24))
+		q = RDateTime::from_ajd(p.ajd)
+
+		assert_equal(p, q)
+
 	end
 
 
