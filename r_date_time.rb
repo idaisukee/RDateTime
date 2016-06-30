@@ -129,9 +129,8 @@ end
 
 
 	def self.from_ajd(ajd)
-		# this method does not work.
 		@ajd = ajd
-		@jd = @ajd + Rational(1, 2) + Rational(9, 24)
+		@jd = @ajd + Rational(1, 2)
 		self.jd(@jd)
 	end
 

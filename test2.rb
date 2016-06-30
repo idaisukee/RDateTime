@@ -30,8 +30,13 @@ class TC < Test::Unit::TestCase
 
 	def test_from_ajd
 		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
-		n = RDateTime::from_ajd(m.ajd)
+		n = RDateTime::from_ajd(m.ajd).new_offset(m.offset)
 		assert_equal(m, n)
+
+		u = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(0, 24))
+		s = RDateTime::from_ajd(u.ajd)
+		assert_equal(u, s)
+
 	end
 
 
