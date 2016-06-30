@@ -159,7 +159,9 @@ end
 	def self::from_jd(jd_array)
 		@jd = jd_array[0]
 		@offset = jd_array[1]
-		self.jd(@jd)
+		@local_offset = RDateTime.now.offset
+		@utc_jd = @jd + @offset
+		self.jd(@utc_jd)
 	end
 end
 
