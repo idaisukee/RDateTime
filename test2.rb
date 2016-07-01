@@ -3,6 +3,14 @@ require File.expand_path('../r_date_time.rb',  __FILE__)
 
 class TC < Test::Unit::TestCase
 
+
+
+	def setup
+		t = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
+	end
+
+
+
 	def test_leap_year?
 		assert_equal(true, RDateTime::leap_year?(223))
 		assert_equal(false, RDateTime::leap_year?(0))
