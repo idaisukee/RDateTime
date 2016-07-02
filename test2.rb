@@ -6,7 +6,10 @@ class TC < Test::Unit::TestCase
 
 
 	def setup
-		t = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
+
+		@@t = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24)) # Tokyo
+		@@rc_epoch = RDateTime::RC_EPOCH
+		@@l = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(0, 24)) # London
 	end
 
 
@@ -26,33 +29,30 @@ class TC < Test::Unit::TestCase
 
 
 	def test_rc_ajd
-		m = RDateTime::RC_EPOCH
-		n = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
 
-		assert_equal(0, m.rc_ajd)
-		assert_equal(1, (m + 1).rc_ajd)
-		assert_equal(1.5, (m + 1.5).rc_ajd)
+		assert_equal(0, @@rc_epoch.rc_ajd)
+		assert_equal(1, (@@rc_epoch + 1).rc_ajd)
+		assert_equal(1.5, (@@rc_epoch + 1.5).rc_ajd)
+
+		n = @@rc_epoch.new_offset(Rational(5, 24))
+		assert_equal(0, n.rc_ajd)
+
 	end
 
 
 
 	def test_from_ajd
-		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
-		n = RDateTime::from_ajd(m.ajd).new_offset(m.offset)
-		assert_equal(m, n)
 
-		u = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(0, 24))
-		s = RDateTime::from_ajd(u.ajd)
-		assert_equal(u, s)
+		assert_equal(@@t, RDateTime::from_ajd(@@t.ajd))
+		assert_equal(@@l, RDateTime::from_ajd(@@l.ajd))
+		assert_equal(@@rc_epoch, RDateTime::from_ajd(@@rc_epoch.ajd))
+		
+		n = RDateTime::from_ajd(@@t.ajd).new_offset(@@t.offset)
+		assert_equal(@@t, n)
 
-		p = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(5, 24))
-		q = RDateTime::from_ajd(p.ajd)
 
-		assert_equal(p, q)
 
 	end
-
-
 
 	def test_from_jd
 		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
@@ -104,7 +104,7 @@ class TC < Test::Unit::TestCase
 
 
 	def test_from_prop_rc
-		m = RDateTime.new(2016, 6, 29, 8, 0, 0, Rational(9, 24))
+		m = @@t.new_offset(0)
 		n = RDateTime.from_prop_rc(223, 9, 11, 0, 0, 0)
 		assert_equal(m, n)
 	end
