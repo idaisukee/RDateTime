@@ -15,4 +15,23 @@ class Range
 		end
 		
 	end
+
+
+
+	def each_n_day(num)
+
+		@min = self.min
+		@max = self.max
+		@num = num
+
+		@i = @min
+		while @i < @max
+			yield(@i)
+			@i +=  @num
+		end
+
+		end
+
 end
+
+
