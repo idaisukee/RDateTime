@@ -12,8 +12,8 @@ range.each_n_gc_min(15) do |t|
 	rc_date = t.prop_rc_day.floor
 	rc_time = t.prop_rc_day - rc_date
 	rc_time_i = (rc_time.floor(4) * 10 ** 4).to_i
-#	rc = sprintf('.%04d', rc_time_i)
-	rc = sprintf('.%04.4d', rc_time.to_f)
+	rc = sprintf('.%04d', rc_time_i)
+
 
 	gc_hour = sprintf('%02d', t.hour)
 	gc_min = sprintf('%02d', t.min)
