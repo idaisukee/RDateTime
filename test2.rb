@@ -103,7 +103,7 @@ class TC < Test::Unit::TestCase
 
 
 
-	def test_from_prop_rc_to_rc_ajd
+	def test_prop_rc_to_rc_ajd
 		assert_equal(0, RDateTime::prop_rc_to_rc_ajd(0, 0, 0, 0, 0, 0))
 		assert_equal(1, RDateTime::prop_rc_to_rc_ajd(0, 0, 1, 0, 0, 0))
 		assert_equal(365, RDateTime::prop_rc_to_rc_ajd(1, 0, 0, 0, 0, 0))
