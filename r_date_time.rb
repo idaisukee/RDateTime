@@ -102,7 +102,7 @@ end
 
 
 
-def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
+def self::prop_rc_to_rc_ajd(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
 	# this method seems to produce a displacement of 1 day.
 	@prop_rc_year = prop_rc_year
 	@prop_rc_month = prop_rc_month
@@ -112,9 +112,10 @@ def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min
 	@rc_sec = rc_sec
 
 	@rc_ajd = 0
-	while @prop_rc_year >= 1
-		@rc_ajd += RDateTime::year_length(@prop_rc_year)
-		@prop_rc_year -= 1
+	@i = 0
+	while @i < @prop_rc_year
+		@rc_ajd += RDateTime::year_length(@i)
+		@i += 1
 	end
 
 	@rc_ajd += 30 * @prop_rc_month
@@ -123,7 +124,7 @@ def self::from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min
 	@rc_ajd += Rational(@rc_min, 1000)
 	@rc_ajd += Rational(@rc_sec, 100000)
 
-	self::from_rc_ajd(@rc_ajd)
+	@rc_ajd
 end
 
 
