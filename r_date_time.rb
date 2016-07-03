@@ -112,9 +112,9 @@ def self::prop_rc_to_rc_ajd(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, r
 	@rc_sec = rc_sec
 
 	@rc_ajd = 0
-	@i = 0
-	while @i < @prop_rc_year
-		@rc_ajd += RDateTime::year_length(@i)
+	@i = 1
+	while @i <= @prop_rc_year
+		@rc_ajd += RDateTime::year_length(@i - 1)
 		@i += 1
 	end
 
