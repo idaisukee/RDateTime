@@ -109,6 +109,7 @@ class TC < Test::Unit::TestCase
 		assert_equal(365 * 2, RDateTime::prop_rc_year_to_rc_ajd(2))
 		assert_equal(365 * 3, RDateTime::prop_rc_year_to_rc_ajd(3))
 		assert_equal(365 * 4 + 1, RDateTime::prop_rc_year_to_rc_ajd(4))
+		assert_equal(365 * 5 + 1, RDateTime::prop_rc_year_to_rc_ajd(5))
 	end
 
 
@@ -120,9 +121,10 @@ class TC < Test::Unit::TestCase
 		assert_equal(365 + 1, RDateTime::prop_rc_to_rc_ajd(1, 0, 1, 0, 0, 0))
 		assert_equal(365 + 10, RDateTime::prop_rc_to_rc_ajd(1, 0, 10, 0, 0, 0))
 		assert_equal(365 + 364, RDateTime::prop_rc_to_rc_ajd(1, 0, 364, 0, 0, 0))
-#		assert_equal(365 * 2, RDateTime::prop_rc_to_rc_ajd(2, 0, 0, 0, 0, 0))
-#		assert_equal(365 * 3, RDateTime::prop_rc_to_rc_ajd(3, 0, 0, 0, 0, 0))
+		assert_equal(365 * 2, RDateTime::prop_rc_to_rc_ajd(2, 0, 0, 0, 0, 0))
+		assert_equal(365 * 3, RDateTime::prop_rc_to_rc_ajd(3, 0, 0, 0, 0, 0))
 		assert_equal(365 * 4 + 1, RDateTime::prop_rc_to_rc_ajd(4, 0, 0, 0, 0, 0))
+		assert_equal(365 * 4 + 1 + 20 , RDateTime::prop_rc_to_rc_ajd(4, 0, 20, 0, 0, 0))
 	end
 
 
