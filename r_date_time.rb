@@ -138,8 +138,9 @@ def self::prop_rc_year_to_rc_ajd(prop_rc_year)
 		days = array.map do |i|
 			self::year_length(i)
 		end
+		days_sum = days.inject(:+)
 	end
-	days_sum = days.inject(:+)
+	
 		
 end
 
