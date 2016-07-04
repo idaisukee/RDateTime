@@ -129,6 +129,21 @@ end
 
 
 
+def self::prop_rc_year_to_rc_ajd(prop_rc_year)
+	if prop_rc_year == 0 then
+		0
+	else
+		array = Range.new(0, prop_rc_year - 1).to_a
+		days = array.map do |i|
+			self::year_length(i)
+		end
+	end
+	days_sum = days.inject(:+)
+		
+end
+
+
+
 	def self.from_ajd(ajd)
 		@ajd = ajd
 		@jd = @ajd + Rational(1, 2)
