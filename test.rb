@@ -20,9 +20,9 @@ p m.prop_rc_year_day
 p n.prop_rc_year_day
 
 
-q = RDateTime::from_prop_rc(223, 9, 9, 1, 52, 10)
+#q = RDateTime::from_prop_rc(223, 9, 9, 1, 52, 10)
 
-r = RDateTime::from_prop_rc(10, 0, 0, 1, 52, 10)
+#r = RDateTime::from_prop_rc(10, 0, 0, 1, 52, 10)
 
 p m.prop_rc_year_day
 p m.prop_rc_year_day[1].to_f
@@ -38,3 +38,5 @@ p File.expand_path('../float.rb', __FILE__)
 p m.year_ratio.to_f
 
 p m.class::RC_EPOCH
+
+p Range.new(0, 3).to_a
