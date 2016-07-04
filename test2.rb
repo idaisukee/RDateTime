@@ -125,6 +125,7 @@ class TC < Test::Unit::TestCase
 		assert_equal(365 * 3, RDateTime::prop_rc_to_rc_ajd(3, 0, 0, 0, 0, 0))
 		assert_equal(365 * 4 + 1, RDateTime::prop_rc_to_rc_ajd(4, 0, 0, 0, 0, 0))
 		assert_equal(365 * 4 + 1 + 20 , RDateTime::prop_rc_to_rc_ajd(4, 0, 20, 0, 0, 0))
+		assert_equal(365 * 4 + 1 + 20 + 0.5, RDateTime::prop_rc_to_rc_ajd(4, 0, 20, 5, 0, 0))
 	end
 
 
