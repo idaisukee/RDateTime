@@ -45,3 +45,6 @@ i = 2000
 p c = RDateTime::rc_ajd_to_prop_rc_year_candidates(i)
 p RDateTime::prop_rc_year_candidates_to_rc_ajd(c)
 p RDateTime::rc_ajd_to_prop_rc_year(i)
+
+p RDateTime::prop_rc_year_to_past_days(5)
+p RDateTime::rc_ajd_to_prop_rc(1827)

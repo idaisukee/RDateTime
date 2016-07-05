@@ -129,6 +129,18 @@ class RDateTime < DateTime
 
 		end
 
+
+
+		def rc_ajd_to_prop_rc(rc_ajd)
+
+			prop_rc_year = self::rc_ajd_to_prop_rc_year(rc_ajd)
+			past_days = self::prop_rc_year_to_past_days(prop_rc_year)
+			prop_rc_day = rc_ajd - past_days
+
+			[prop_rc_year, prop_rc_day]
+
+		end
+
 		def rc_ajd_to_ajd(rc_ajd)
 			ajd = rc_ajd + self::RC_EPOCH.ajd
 		end
