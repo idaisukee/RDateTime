@@ -106,7 +106,29 @@ class RDateTime < DateTime
 
 
 
-			
+		def prop_rc_year_candidates_to_rc_ajd(prop_rc_candidates)
+			prop_rc_candidates.map do |y|
+				prop_rc_year_to_rc_ajd(y)
+			end
+		end
+
+
+
+		def rc_ajd_to_prop_rc_year(rc_ajd)
+
+			candidates = self::rc_ajd_to_prop_rc_year_candidates(rc_ajd)
+			days = self::prop_rc_year_candidates_to_rc_ajd(candidates)
+
+			correct_day = days.select do |d|
+				d < rc_ajd
+			end.max
+
+			correct_prop_rc_year = candidates.select do |y|
+				RDateTime::prop_rc_year_to_rc_ajd(y) == correct_day
+			end[0]
+
+		end
+
 		def rc_ajd_to_ajd(rc_ajd)
 			ajd = rc_ajd + self::RC_EPOCH.ajd
 		end

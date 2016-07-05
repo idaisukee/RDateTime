@@ -41,4 +41,7 @@ p m.class::RC_EPOCH
 
 p Range.new(0, 3).to_a
 
-p RDateTime::rc_ajd_to_prop_rc_year_candidates(364)
+i = 2000
+p c = RDateTime::rc_ajd_to_prop_rc_year_candidates(i)
+p RDateTime::prop_rc_year_candidates_to_rc_ajd(c)
+p RDateTime::rc_ajd_to_prop_rc_year(i)
