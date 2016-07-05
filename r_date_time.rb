@@ -13,17 +13,17 @@ class RDateTime < DateTime
 
 	RC_EPOCH = self.new(1792, 9, 22, 0, 0, 0, Rational(1, 24))
 
-## object generation cascade
-# rc
-# -> prop_rc
-# -> rc_ajd : covered
-# -> ajd : covered
-# -> jd : covered
-# -> object : covered
+	## object generation cascade
+	# rc
+	# -> prop_rc
+	# -> rc_ajd : covered
+	# -> ajd : covered
+	# -> jd : covered
+	# -> object : covered
 
-## object displaying styles
-# status bar style (like 223:3.14|287.181)
-# jp style (like 共和暦 224 年 10 月 18 日 1 時 81 分)
+	## object displaying styles
+	# status bar style (like 223:3.14|287.181)
+	# jp style (like 共和暦 224 年 10 月 18 日 1 時 81 分)
 
 
 
@@ -161,27 +161,27 @@ class RDateTime < DateTime
 
 
 
-def season_ratio
+	def season_ratio
 
-	self.year_ratio * 4
+		self.year_ratio * 4
 
-end
-
-
-
-def prop_rc_year
-
-	@prop_rc_year = self.prop_rc_year_day[0]
-
-end
+	end
 
 
 
-def prop_rc_day
+	def prop_rc_year
 
-	@prop_rc_year = self.prop_rc_year_day[1]
+		@prop_rc_year = self.prop_rc_year_day[0]
 
-end
+	end
+
+
+
+	def prop_rc_day
+
+		@prop_rc_year = self.prop_rc_year_day[1]
+
+	end
 
 
 
