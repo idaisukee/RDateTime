@@ -60,6 +60,12 @@ class RDateTime < DateTime
 
 
 
+		def rc_ajd_to_ajd(rc_ajd)
+			ajd = rc_ajd + self::RC_EPOCH.ajd
+		end
+
+
+
 		def prop_rc_year_to_rc_ajd(prop_rc_year)
 
 			if prop_rc_year == 0 then

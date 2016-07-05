@@ -44,6 +44,15 @@ class TC < Test::Unit::TestCase
 
 
 
+
+	def test_rc_ajd_to_ajd
+
+		assert_equal(RDateTime::RC_EPOCH.ajd, RDateTime::rc_ajd_to_ajd(0))
+		assert_equal(RDateTime::RC_EPOCH.ajd + 1, RDateTime::rc_ajd_to_ajd(1))
+		assert_equal(RDateTime::RC_EPOCH.ajd + 1.5, RDateTime::rc_ajd_to_ajd(1.5))
+
+	end
+
 	def test_from_ajd
 
 		assert_equal(@@t, RDateTime::from_ajd(@@t.ajd))
