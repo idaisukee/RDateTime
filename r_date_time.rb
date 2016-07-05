@@ -30,6 +30,17 @@ class RDateTime < DateTime
 
 
 
+		def prop_rc_to_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
+
+			rc_year = prop_rc_year + 1
+			rc_month = prop_rc_month + 1
+			rc_day = prop_rc_day + 1
+
+			[rc_year, rc_month, rc_day, rc_hour, rc_min, rc_sec]
+
+		end
+
+
 
 		def prop_rc_to_rc_ajd(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
 			# this method seems to produce a displacement of 1 day.
