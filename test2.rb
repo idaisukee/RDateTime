@@ -93,8 +93,22 @@ class TC < Test::Unit::TestCase
 		assert_equal(0, RDateTime::prop_rc_year_to_past_days(0))
 		assert_equal(365, RDateTime::prop_rc_year_to_past_days(1))
 		assert_equal(365 * 2, RDateTime::prop_rc_year_to_past_days(2))
+		assert_equal(365 * 3, RDateTime::prop_rc_year_to_past_days(3))
+		assert_equal(365 * 4 + 1, RDateTime::prop_rc_year_to_past_days(4))
+		assert_equal(365 * 100 + 24, RDateTime::prop_rc_year_to_past_days(100))
+		assert_equal(365 * 400 + (24 * 4) + 1, RDateTime::prop_rc_year_to_past_days(400))
 
-		end
+	end
+
+
+
+	def test_rc_ajd_to_prop_rc_year_candidates
+
+		assert_equal([0, 1], RDateTime::rc_ajd_to_prop_rc_year_candidates(365))
+
+	end
+
+
 
 	def test_season_ratio
 
