@@ -1,6 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# function confirmed on 
+# ruby 1.9.3p484 (2013-11-22 revision 43786) [i686-linux]
+
+
+
 require 'date'
 require File.expand_path('../float.rb', __FILE__)
-
 
 
 class RDateTime < DateTime
@@ -15,7 +21,10 @@ class RDateTime < DateTime
 # -> jd : covered
 # -> object : covered
 
-## object displaying 
+## object displaying styles
+# status bar style (like 223:3.14|287.181)
+# jp style (like 共和暦 224 年 10 月 18 日 1 時 81 分)
+
 
 
 	class << self
