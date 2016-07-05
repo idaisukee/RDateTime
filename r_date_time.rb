@@ -35,7 +35,7 @@ class RDateTime < DateTime
 
 			rc_ajd = 0
 
-			rc_ajd += RDateTime::prop_rc_year_to_rc_ajd(prop_rc_year)
+			rc_ajd += self::prop_rc_year_to_rc_ajd(prop_rc_year)
 
 			rc_ajd += 30 * prop_rc_month
 			rc_ajd += prop_rc_day
