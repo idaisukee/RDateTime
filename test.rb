@@ -40,3 +40,5 @@ p m.year_ratio.to_f
 p m.class::RC_EPOCH
 
 p Range.new(0, 3).to_a
+
+p RDateTime::rc_ajd_to_prop_rc_year_candidates(364)

@@ -88,6 +88,14 @@ class TC < Test::Unit::TestCase
 
 
 
+	def test_prop_rc_year_to_past_days
+
+		assert_equal(0, RDateTime::prop_rc_year_to_past_days(0))
+		assert_equal(365, RDateTime::prop_rc_year_to_past_days(1))
+		assert_equal(365 * 2, RDateTime::prop_rc_year_to_past_days(2))
+
+		end
+
 	def test_season_ratio
 
 		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))

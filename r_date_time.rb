@@ -72,6 +72,45 @@ class RDateTime < DateTime
 
 
 
+		def prop_rc_year_to_past_days(prop_rc_year)
+
+			if prop_rc_year == 0 then
+				0
+			else
+
+				range = Range.new(0, prop_rc_year - 1)
+				array = range.to_a
+
+				days = array.map do |y|
+					self::year_length(y)
+				end
+
+				past_days = days.inject(:+)
+
+			end
+
+		end
+
+
+
+		def rc_ajd_to_prop_rc_year_candidates(rc_ajd)
+			
+			temp_prop_rc_year = (rc_ajd / 365.25).floor
+			range = Range.new(temp_prop_rc_year - 1, temp_prop_rc_year + 1)
+			array = range.to_a
+			days_sums = array.map do |y|
+				self::prop_rc_year_to_past_days(y)
+			end.reject do |d|
+				d == nil
+			end
+
+			# max = days_sums.select do |i|
+			# 	i <= rc_ajd
+			# end
+
+		end
+
+			
 		def rc_ajd_to_ajd(rc_ajd)
 			ajd = rc_ajd + self::RC_EPOCH.ajd
 		end
@@ -209,4 +248,5 @@ class RDateTime < DateTime
 		self.jd(@utc_jd)
 	end
 end
+
 
