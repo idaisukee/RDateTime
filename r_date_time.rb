@@ -7,6 +7,15 @@ class RDateTime < DateTime
 
 	RC_EPOCH = self.new(1792, 9, 22, 0, 0, 0, Rational(1, 24))
 
+## object generation cascade
+# rc
+# -> prop_rc
+# -> rc_ajd : covered
+# -> ajd : covered
+# -> jd : covered
+# -> object : covered
+
+## object displaying 
 
 
 	class << self
