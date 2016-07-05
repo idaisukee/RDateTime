@@ -25,7 +25,10 @@ class RDateTime < DateTime
 	# status bar style (like 223:3.14|287.181)
 	# jp style (like 共和暦 224 年 10 月 18 日 1 時 81 分)
 
-
+	## object displaying cascade
+	# object
+	# -> ajd
+	# -> prop_rc
 
 	class << self
 		def leap_year?(prop_rc_year)
