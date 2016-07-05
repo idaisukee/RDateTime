@@ -17,6 +17,9 @@ class TC < Test::Unit::TestCase
 	def test_leap_year?
 		assert_equal(true, RDateTime::leap_year?(223))
 		assert_equal(false, RDateTime::leap_year?(0))
+		assert_equal(false, RDateTime::leap_year?(1))
+		assert_equal(false, RDateTime::leap_year?(2))
+		assert_equal(true, RDateTime::leap_year?(3))
 	end
 
 
