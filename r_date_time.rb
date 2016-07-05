@@ -97,18 +97,14 @@ class RDateTime < DateTime
 			
 			temp_prop_rc_year = (rc_ajd / 365.25).floor
 			range = Range.new(temp_prop_rc_year - 1, temp_prop_rc_year + 1)
-			array = range.to_a
-			days_sums = array.map do |y|
-				self::prop_rc_year_to_past_days(y)
-			end.reject do |d|
-				d == nil
+
+			array = range.to_a.select do |y|
+				y >= 0
 			end
 
-			# max = days_sums.select do |i|
-			# 	i <= rc_ajd
-			# end
-
 		end
+
+
 
 			
 		def rc_ajd_to_ajd(rc_ajd)
