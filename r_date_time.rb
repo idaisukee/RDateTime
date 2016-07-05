@@ -10,23 +10,15 @@ class RDateTime < DateTime
 
 
 	class << self
-
 		def leap_year?(prop_rc_year)
 			rc_year = prop_rc_year + 1
-			if rc_year % 4 == 0 then
-				if rc_year % 100 == 0 then
-					if rc_year % 400 == 0 then
-						true
-					else
-						false
-					end
-				else
-					true
-				end
+			if rc_year % 400 == 0 || rc_year % 4 == 0 && rc_year % 100 != 0 then
+				true
 			else
 				false
 			end
 		end
+
 
 
 
