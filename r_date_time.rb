@@ -378,7 +378,14 @@ class RDateTime < DateTime
 
 
 
+	def rc_hour
 
+		@time = self.rc_time.to_f.to_s
+		@hour = @time[2].to_i
+
+	end
+
+		
 
 
 
