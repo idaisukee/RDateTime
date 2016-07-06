@@ -207,6 +207,16 @@ class RDateTime < DateTime
 
 		end
 
+
+
+		def in_jp(year, month, day, hour, minute)
+
+			print "[ 共和暦 #{year} 年 #{month} 月 #{day} 日 #{hour} 時 #{minute} 分 ]"
+
+		end
+
+
+
 	end
 
 
