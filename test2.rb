@@ -137,6 +137,7 @@ class TC < Test::Unit::TestCase
 
 		assert_equal(true, @@t.in_prop_rc_year?(223))
 		assert_equal(true, @@l.in_prop_rc_year?(223))
+		assert_equal(true, (@@l + 100).in_prop_rc_year?(224))
 
 	end
 
