@@ -41,12 +41,12 @@ class RDateTime < DateTime
 		end
 
 
-	def from_jd(jd_array)
-		@jd = jd_array[0]
-		@offset = jd_array[1]
-		@utc_jd = @jd - @offset
-		self.jd(@utc_jd)
-	end
+		def from_jd(jd_array)
+			@jd = jd_array[0]
+			@offset = jd_array[1]
+			@utc_jd = @jd - @offset
+			self.jd(@utc_jd)
+		end
 
 
 
