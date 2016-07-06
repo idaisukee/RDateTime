@@ -299,5 +299,22 @@ class RDateTime < DateTime
 
 
 
+	def to_rc_jp
+
+		self.class::in_jp(year, month, day)
+
+	end
+
+	end
+
+
+
+	def to_prop_rc_jp
+
+		self.class::in_jp(year, month, day)
+
+	end
+
+
 end
 
