@@ -72,6 +72,14 @@ class RDateTime < DateTime
 
 
 
+		def from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
+
+			rc_ajd = prop_rc_to_rc_ajd(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
+			self::from_rc_ajd(rc_ajd)
+
+		end
+
+
 		def prop_rc_year_to_past_days(prop_rc_year)
 
 			if prop_rc_year == 0 then
