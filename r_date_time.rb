@@ -210,6 +210,17 @@ class RDateTime < DateTime
 
 
 
+	def in_prop_rc_year?(prop_rc_year)
+
+p		range = Range.new( self.class::from_prop_rc(prop_rc_year, 0, 0, 0, 0, 0), self.class::from_prop_rc(prop_rc_year + 1, 0, 0, 0, 0, 0), true)
+p		range.include? self
+
+	end
+
+
+				
+
+
 	def prop_rc_year_day
 
 		@rc_ajd = self.rc_ajd
