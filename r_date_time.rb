@@ -326,5 +326,13 @@ class RDateTime < DateTime
 	end
 
 
+
+	def to_prop_rc
+
+		@ajd = self.ajd
+		@rc_ajd = self.rc_ajd
+		@prop_rc = self.class::rc_ajd_to_prop_rc(@rc_ajd)
+
+	end
 end
 

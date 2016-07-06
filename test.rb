@@ -56,3 +56,6 @@ a = (n - 1).new_offset(0)
 b = (n + 1).new_offset(0)
 
 p Range.new(a, b, true).include? n
+
+
+p n.to_prop_rc[1].to_f
