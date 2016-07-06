@@ -128,7 +128,7 @@ class RDateTime < DateTime
 			days = self::prop_rc_year_candidates_to_rc_ajd(candidates)
 
 			correct_day = days.select do |d|
-				d < rc_ajd
+				d <= rc_ajd
 			end.max
 
 			correct_prop_rc_year = candidates.select do |y|
