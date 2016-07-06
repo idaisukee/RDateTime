@@ -352,4 +352,16 @@ class RDateTime < DateTime
 	end
 
 
+
+	def prop_rc_month
+
+		Rational(self.prop_rc_day, 30).floor
+
+	end
+
+
+
+
+
+
 end
