@@ -50,4 +50,9 @@ p RDateTime::prop_rc_year_to_past_days(5)
 p RDateTime::rc_ajd_to_prop_rc(1827)
 
 n = RDateTime.now
-p n.in_prop_rc_year?(224)
+n.in_prop_rc_year?(223)
+
+a = (n - 1).new_offset(0)
+b = (n + 1).new_offset(0)
+
+p Range.new(a, b, true).include? n
