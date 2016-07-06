@@ -385,6 +385,15 @@ class RDateTime < DateTime
 
 	end
 
+
+
+	def rc_minute
+
+		@time = self.rc_time.to_f.to_s
+		@hour = @time[3..4].to_i
+
+	end
+
 		
 
 

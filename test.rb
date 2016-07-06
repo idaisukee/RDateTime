@@ -63,4 +63,4 @@ p n.prop_rc_year
 p n.prop_rc_day.to_f
 
 p n.prop_rc_monthday
-p n.rc_hour
+p n.rc_minute
