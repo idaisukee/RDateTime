@@ -321,7 +321,7 @@ class RDateTime < DateTime
 
 	def to_prop_rc_jp
 
-		self.class::in_jp(year, month, day, hour, minute)
+		self.class::in_jp(self.prop_rc_year, self.prop_rc_month, self.prop_rc_monthday, self.rc_hour, self.rc_minute)
 
 	end
 

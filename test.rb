@@ -64,3 +64,5 @@ p n.prop_rc_day.to_f
 
 p n.prop_rc_monthday
 p n.rc_minute
+print n.to_prop_rc_jp
+
