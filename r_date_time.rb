@@ -315,7 +315,7 @@ class RDateTime < DateTime
 
 	end
 
-	end
+
 
 
 
