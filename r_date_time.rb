@@ -361,7 +361,11 @@ class RDateTime < DateTime
 
 
 
+	def prop_rc_monthday
 
+		( self.prop_rc_day % 30 ).floor.to_i
+
+	end
 
 
 end
