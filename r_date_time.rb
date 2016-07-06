@@ -41,6 +41,14 @@ class RDateTime < DateTime
 		end
 
 
+	def from_jd(jd_array)
+		@jd = jd_array[0]
+		@offset = jd_array[1]
+		@utc_jd = @jd - @offset
+		self.jd(@utc_jd)
+	end
+
+
 
 		def prop_rc_to_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
 
@@ -291,11 +299,5 @@ class RDateTime < DateTime
 
 
 
-	def self::from_jd(jd_array)
-		@jd = jd_array[0]
-		@offset = jd_array[1]
-		@utc_jd = @jd - @offset
-		self.jd(@utc_jd)
-	end
 end
 
