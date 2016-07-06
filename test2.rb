@@ -102,13 +102,43 @@ class TC < Test::Unit::TestCase
 
 
 
+	def test_rc_ajd_to_prop_rc_year
+
+		assert_equal(0, RDateTime::rc_ajd_to_prop_rc_year(100))
+		assert_equal(0, RDateTime::rc_ajd_to_prop_rc_year(364))
+		assert_equal(1, RDateTime::rc_ajd_to_prop_rc_year(365))
+
+	end
+
 	def test_rc_ajd_to_prop_rc_year_candidates
 
 		assert_equal([0, 1], RDateTime::rc_ajd_to_prop_rc_year_candidates(365))
+		assert_equal([0, 1, 2], RDateTime::rc_ajd_to_prop_rc_year_candidates(366))
+		assert_equal([1, 2, 3], RDateTime::rc_ajd_to_prop_rc_year_candidates(365 + 365 + 365))
+		assert_equal([2, 3, 4], RDateTime::rc_ajd_to_prop_rc_year_candidates(365 * 4 ))
+		assert_equal([3, 4, 5], RDateTime::rc_ajd_to_prop_rc_year_candidates(365 * 4 + 1))
 
 	end
 
 
+
+	def test_from_prop_rc
+
+		assert_equal(@@rc_epoch, RDateTime::from_prop_rc(0, 0, 0, 0, 0, 0))
+		assert_equal(@@rc_epoch + 3, RDateTime::from_prop_rc(0, 0, 3, 0, 0, 0))
+		assert_equal(@@rc_epoch + 365, RDateTime::from_prop_rc(1, 0, 0, 0, 0, 0))
+		assert_equal(@@rc_epoch + 365 * 4 + 1, RDateTime::from_prop_rc(4, 0, 0, 0, 0, 0))
+
+	end
+
+
+
+	def test_in_prop_rc_year?
+
+		assert_equal(true, @@t.in_prop_rc_year?(223))
+		assert_equal(true, @@l.in_prop_rc_year?(223))
+
+	end
 
 	def test_season_ratio
 

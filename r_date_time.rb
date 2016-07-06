@@ -298,4 +298,3 @@ p		range.include? self
 	end
 end
 
-

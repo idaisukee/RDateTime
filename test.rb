@@ -48,3 +48,6 @@ p RDateTime::rc_ajd_to_prop_rc_year(i)
 
 p RDateTime::prop_rc_year_to_past_days(5)
 p RDateTime::rc_ajd_to_prop_rc(1827)
+
+n = RDateTime.now
+p n.in_prop_rc_year?(224)
