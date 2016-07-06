@@ -334,5 +334,22 @@ class RDateTime < DateTime
 		@prop_rc = self.class::rc_ajd_to_prop_rc(@rc_ajd)
 
 	end
-end
 
+
+
+	def prop_rc_year
+
+		@prop_rc_year = self.to_prop_rc[0]
+
+	end
+
+
+
+	def prop_rc_day
+
+		@prop_rc_day = self.to_prop_rc[1]
+
+	end
+
+
+end
