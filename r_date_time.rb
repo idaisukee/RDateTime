@@ -372,9 +372,12 @@ class RDateTime < DateTime
 	def time
 
 		@day = self.rc_ajd.floor
-		@time = ( self - @day ).rc_ajd.to_f
+		@time = ( self - @day ).rc_ajd
 
 	end
+
+
+
 
 
 end
