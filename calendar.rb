@@ -1,6 +1,8 @@
-require File.expand_path('../r_date_time.rb',  __FILE__)
-require File.expand_path('../float.rb',  __FILE__)
-require File.expand_path('../range.rb',  __FILE__)
+#!/usr/bin/ruby
+
+require File.expand_path('../r_date_time.rb',  File.realpath(__FILE__))
+require File.expand_path('../float.rb',  File.realpath(__FILE__))
+require File.expand_path('../range.rb',  File.realpath(__FILE__))
 
 
 now = RDateTime.now
