@@ -219,29 +219,29 @@ class RDateTime < DateTime
 
 		def prop_rc_parse(str)
 
-			array = str.split(':')
-			case array.size
+			@array = str.split(':')
+			case @array.size
 
 				when 1
 				if str[-1] == ':' then
-					prop_rc_year = array[0].to_i
-					prop_rc_day = 0
+					@prop_rc_year = @array[0].to_i
+					@prop_rc_day = 0
 				end
 
 				if str[0] == ':' then
-					prop_rc_year = RDateTime.now.prop_rc_year
-					prop_rc_day = array[0].to_r
+					@prop_rc_year = RDateTime.now.prop_rc_year
+					@prop_rc_day = array[0].to_r
 				end
 				
 				when 2
-				prop_rc_year = array[0].to_i
-				prop_rc_day = array[1].to_r
+				@prop_rc_year = @array[0].to_i
+				@prop_rc_day = @array[1].to_r
 
 			end
 
-			rc_ajd = prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
+			@rc_ajd = self::prop_rc_year_to_past_days(@prop_rc_year) + @prop_rc_day
 
-			obj = self::from_rc_ajd(rc_ajd)
+			@obj = self::from_rc_ajd(@rc_ajd)
 
 		end
 
