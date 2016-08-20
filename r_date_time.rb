@@ -220,8 +220,15 @@ class RDateTime < DateTime
 		def prop_rc_parse(str)
 
 			array = str.split(':')
-			prop_rc_year = array[0].to_i
-			prop_rc_day = array[1].to_r
+			if array.size == 2 then
+				prop_rc_year = array[0].to_i
+				prop_rc_day = array[1].to_r
+			else
+				if str[-1] == ':' then
+					prop_rc_year = array[0].to_i
+					prop_rc_day = 0
+				end
+			end
 
 			rc_ajd = prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
 
