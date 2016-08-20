@@ -217,7 +217,22 @@ class RDateTime < DateTime
 
 
 
+		def prop_rc_parse(str)
+
+			array = str.split(':')
+			prop_rc_year = array[0].to_i
+			prop_rc_day = array[1].to_r
+
+			rc_ajd = prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
+
+			obj = self::from_rc_ajd(rc_ajd)
+
+		end
+
+
+
 	end
+
 
 
 	def rc_ajd

@@ -210,4 +210,16 @@ class TC < Test::Unit::TestCase
 		n = RDateTime.new(-4712, 1, 1, 0, 0, 0, Rational(0, 24))
 		assert_equal(m, n)
 	end
+
+
+
+	def test_prop_rc_parse
+		m = RDateTime.prop_rc_parse('223:333')
+		n = RDateTime.new(2016, 8, 20, 8, 0, 0, Rational(9, 24)).new_offset(0)
+		assert_equal(m, n)
+
+		o = RDateTime.prop_rc_parse('223:333.5')
+		p = RDateTime.new(2016, 8, 20, 20, 0, 0, Rational(9, 24)).new_offset(0)
+		assert_equal(o, p)
+	end
 end
