@@ -13,6 +13,8 @@ class RDateTime < DateTime
 
 	RC_EPOCH = self.new(1792, 9, 22, 0, 0, 0, Rational(1, 24))
 
+	JST = Rational(9, 24)
+
 	## object generation cascade
 	# rc
 	# -> prop_rc
@@ -242,7 +244,7 @@ class RDateTime < DateTime
 
 			rc_ajd = self::prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
 
-			obj = self::from_rc_ajd(rc_ajd)
+			obj = self::from_rc_ajd(rc_ajd).new_offset(JST)
 		end
 
 
@@ -290,7 +292,7 @@ class RDateTime < DateTime
 			prop_rc_day =  30 * prop_rc_month + prop_rc_monthday + prop_rc_time
 			rc_ajd = self::prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
 
-			obj = self::from_rc_ajd(rc_ajd)
+			obj = self::from_rc_ajd(rc_ajd).new_offset(JST)
 		end
 
 	end
