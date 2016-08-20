@@ -36,7 +36,7 @@ class TC < Test::Unit::TestCase
 		assert_equal(0, @@rc_epoch.rc_ajd)
 		assert_equal(1, (@@rc_epoch + 1).rc_ajd)
 		assert_equal(1.5, (@@rc_epoch + 1.5).rc_ajd)
-
+		assert_equal(1000, (@@rc_epoch + 1000).rc_ajd)
 		n = @@rc_epoch.new_offset(Rational(5, 24))
 		assert_equal(0, n.rc_ajd)
 
@@ -106,6 +106,12 @@ class TC < Test::Unit::TestCase
 		assert_equal(0, RDateTime::rc_ajd_to_prop_rc_year(100))
 		assert_equal(0, RDateTime::rc_ajd_to_prop_rc_year(364))
 		assert_equal(1, RDateTime::rc_ajd_to_prop_rc_year(365))
+		assert_equal(1, RDateTime::rc_ajd_to_prop_rc_year(366))
+		assert_equal(2, RDateTime::rc_ajd_to_prop_rc_year(1000))
+		assert_equal(3, RDateTime::rc_ajd_to_prop_rc_year(365 + 365 + 365 + 365))
+		assert_equal(4, RDateTime::rc_ajd_to_prop_rc_year(365 + 365 + 365 + 366))
+		assert_equal(8, RDateTime::rc_ajd_to_prop_rc_year((365 + 365 + 365 + 366) * 2))
+		assert_equal(400, RDateTime::rc_ajd_to_prop_rc_year(365 * 400 + 97))
 
 	end
 
