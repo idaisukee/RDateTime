@@ -75,7 +75,6 @@ class TC < Test::Unit::TestCase
 		jda = n.to_jd
 		assert_equal(n, RDateTime::from_jd(jda))
 
-
 		o = RDateTime.jd(0)
 		p = RDateTime.new(-4712, 1, 1, 0, 0, 0, Rational(0, 24))
 		assert_equal(o, p)
@@ -225,5 +224,9 @@ class TC < Test::Unit::TestCase
 		q = RDateTime.prop_rc_parse('223:')
 		r = RDateTime.new(2015, 9, 22, 8, 0, 0, Rational(9, 24)).new_offset(0)
 		assert_equal(q, r)
+
+		s = RDateTime.prop_rc_parse(':333')
+		t = RDateTime.new(RDateTime.now.year, 8, 20, 8, 0, 0, Rational(9, 24)).new_offset(0)
+		assert_equal(s, t)
 	end
 end

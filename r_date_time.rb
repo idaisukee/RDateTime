@@ -227,6 +227,11 @@ class RDateTime < DateTime
 					prop_rc_year = array[0].to_i
 					prop_rc_day = 0
 				end
+
+				if str[0] == ':' then
+					prop_rc_year = RDateTime.now.prop_rc_year
+					prop_rc_day = array[0].to_r
+				end
 				
 				when 2
 				prop_rc_year = array[0].to_i
