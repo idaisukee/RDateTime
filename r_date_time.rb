@@ -247,9 +247,53 @@ class RDateTime < DateTime
 
 
 
+		def rc_parse(str)
+
+			array = str.split('T')
+			case array.size
+
+			when 1
+				real_str = array[0]
+				if /\//.match(real_str) then
+					date = real_str
+					time = '0'
+				else
+					if /./.match(real_str) then
+						date = [self.now.prop_rc_year + 1, self.now.prop_rc_month + 1, self.now.prop_rc_monthday + 1].join('/')
+						time = real_str
+					end
+				end
+			when 2
+				date = array[0]
+				time = array[1]
+			end
+			
+			date_array = date.split('/')
+
+			case date_array.size
+
+			when 2
+				rc_year = self.now.prop_rc_year + 1
+				rc_month = date_array[0].to_i
+				rc_monthday = date_array[1].to_i
+			when 3
+				rc_year = date_array[0].to_i
+				rc_month = date_array[1].to_i
+				rc_monthday = date_array[2].to_i
+			end
+			
+			prop_rc_year = rc_year - 1
+			prop_rc_month = rc_month - 1
+			prop_rc_monthday = rc_monthday - 1
+			prop_rc_time = time.to_r / 10
+
+			prop_rc_day =  30 * prop_rc_month + prop_rc_monthday + prop_rc_time
+			rc_ajd = self::prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
+
+			obj = self::from_rc_ajd(rc_ajd)
+		end
+
 	end
-
-
 
 	def rc_ajd
 
