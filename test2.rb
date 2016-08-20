@@ -235,4 +235,22 @@ class TC < Test::Unit::TestCase
 		t = RDateTime.new(RDateTime.now.year, 8, 20, 8, 0, 0, Rational(9, 24)).new_offset(0)
 		assert_equal(s, t)
 	end
+
+	def test_rc_parse
+		a = RDateTime::rc_parse('224/12/4')
+		assert_equal(a, RDateTime.new(2016, 8, 20, 8, 0, 0, Rational(9, 24)))
+
+		b = RDateTime::rc_parse('224/12/4T5')
+		assert_equal(b, RDateTime.new(2016, 8, 20, 20, 0, 0, Rational(9, 24)))
+
+		c = RDateTime::rc_parse('1.6')
+	end
+
+	def test_r_parse
+		a = RDateTime::r_parse('g 2016/3/3T3:40')
+		b = RDateTime::r_parse('pr 223:333.5').rc_time.to_f
+		c = RDateTime::r_parse('r 224/11/30')
+		d = RDateTime::r_parse('g 12/30').rc_time.to_f
+		f = RDateTime::r_parse('g 12/30')
+	end
 end
