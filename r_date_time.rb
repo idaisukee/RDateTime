@@ -296,6 +296,11 @@ class RDateTime < DateTime
 		end
 
 
+
+		def g_parse(str)
+			obj = (self::parse(str) - JST).new_offset(JST)
+		end
+
 		def r_parse(str)
 			array = str.split(' ')
 			case array[0]
@@ -304,7 +309,7 @@ class RDateTime < DateTime
 			when 'r'
 				self::rc_parse(array[1])
 			when 'g'
-				self::parse(array[1])
+				self::g_parse(array[1])
 			end
 		end
 
