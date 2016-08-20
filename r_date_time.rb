@@ -314,6 +314,22 @@ class RDateTime < DateTime
 		end
 
 
+
+		def time_conv_g_pr(str)
+
+			obj = self::g_parse(str)
+			obj.rc_time
+
+		end
+
+
+
+		def time_conv_pr_g(str)
+			real_str = ':' + str
+			obj = self::prop_rc_parse(real_str)
+			[obj.hour, obj.min]
+		end
+
 	end 
 
 
