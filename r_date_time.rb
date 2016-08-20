@@ -295,7 +295,25 @@ class RDateTime < DateTime
 			obj = self::from_rc_ajd(rc_ajd).new_offset(JST)
 		end
 
-	end
+
+		def r_parse(str)
+			array = str.split(' ')
+			case array[0]
+			when 'pr'
+				self::prop_rc_parse(array[1])
+			when 'r'
+				self::rc_parse(array[1])
+			when 'g'
+				self::parse(array[1])
+			end
+		end
+
+
+	end 
+
+
+
+
 
 	def rc_ajd
 
