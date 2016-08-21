@@ -248,9 +248,9 @@ class TC < Test::Unit::TestCase
 
 	def test_r_parse
 		a = RDateTime::r_parse('g 2016/3/3T3:40')
-		b = RDateTime::r_parse('pr 223:333.5').rc_time.to_f
+		b = RDateTime::r_parse('pr 223:333.5')[1].rc_time.to_f
 		c = RDateTime::r_parse('r 224/11/30')
-		d = RDateTime::r_parse('g 12/30').rc_time.to_f
+		d = RDateTime::r_parse('g 12/30')[1].rc_time.to_f
 		f = RDateTime::r_parse('g 12/30')
 	end
 end
