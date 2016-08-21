@@ -527,22 +527,6 @@ class RDateTime < DateTime
 
 
 
-	def prop_rc_year
-
-		@prop_rc_year = self.to_prop_rc[0]
-
-	end
-
-
-
-	def prop_rc_day
-
-		@prop_rc_day = self.to_prop_rc[1]
-
-	end
-
-
-
 	def prop_rc_month
 
 		Rational(self.prop_rc_day, 30).floor
