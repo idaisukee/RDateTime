@@ -486,6 +486,9 @@ class RDateTime < DateTime
 		[ @prop_rc_year, @rc_ajd ]
 
 	end
+
+
+
 	def year_ratio
 
 		@rc_ajd = self.rc_ajd
