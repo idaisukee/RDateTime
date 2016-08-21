@@ -33,6 +33,19 @@ class RDateTime < DateTime
 	# -> prop_rc
 
 	class << self
+
+		#
+		# small methods
+		#
+
+		def in_jp(year, month, day, hour, minute)
+
+			"[ 共和暦 #{year} 年 #{month} 月 #{day} 日 #{hour} 時 #{minute} 分 ]"
+
+		end
+
+
+
 		def leap_year?(prop_rc_year)
 			rc_year = prop_rc_year + 1
 			if rc_year % 400 == 0 || rc_year % 4 == 0 && rc_year % 100 != 0 then
@@ -40,14 +53,6 @@ class RDateTime < DateTime
 			else
 				false
 			end
-		end
-
-
-		def from_jd(jd_array)
-			@jd = jd_array[0]
-			@offset = jd_array[1]
-			@utc_jd = @jd - @offset
-			self.jd(@utc_jd)
 		end
 
 
@@ -80,14 +85,6 @@ class RDateTime < DateTime
 			rc_ajd
 		end
 
-
-
-		def from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
-
-			rc_ajd = prop_rc_to_rc_ajd(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
-			self::from_rc_ajd(rc_ajd)
-
-		end
 
 
 		def prop_rc_year_to_past_days(prop_rc_year)
@@ -181,6 +178,40 @@ class RDateTime < DateTime
 
 
 
+		def year_length(prop_rc_year)
+
+			@prop_rc_year = prop_rc_year
+
+			if self::leap_year?(@prop_rc_year) then
+				366
+			else
+				365
+			end
+
+		end
+
+		#
+		# object generator
+		#
+
+		def from_jd(jd_array)
+			@jd = jd_array[0]
+			@offset = jd_array[1]
+			@utc_jd = @jd - @offset
+			self.jd(@utc_jd)
+		end
+
+
+
+		def from_prop_rc(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
+
+			rc_ajd = prop_rc_to_rc_ajd(prop_rc_year, prop_rc_month, prop_rc_day, rc_hour, rc_min, rc_sec)
+			self::from_rc_ajd(rc_ajd)
+
+		end
+
+
+
 		def from_ajd(ajd)
 			@ajd = ajd
 			@jd = @ajd + Rational(1, 2)
@@ -197,25 +228,9 @@ class RDateTime < DateTime
 
 
 
-		def year_length(prop_rc_year)
-
-			@prop_rc_year = prop_rc_year
-
-			if self::leap_year?(@prop_rc_year) then
-				366
-			else
-				365
-			end
-
-		end
-
-
-
-		def in_jp(year, month, day, hour, minute)
-
-			"[ 共和暦 #{year} 年 #{month} 月 #{day} 日 #{hour} 時 #{minute} 分 ]"
-
-		end
+		#
+		# parser
+		#
 
 
 
@@ -386,6 +401,11 @@ class RDateTime < DateTime
 		end
 
 
+		#
+		# converter
+		#
+
+
 
 		def time_conv_g_pr(str)
 
@@ -421,7 +441,16 @@ class RDateTime < DateTime
 
 		end
 
+
+
+
 	end
+
+
+	#
+	# properties
+	#
+
 
 
 	def rc_ajd
@@ -430,19 +459,6 @@ class RDateTime < DateTime
 
 	end
 
-
-
-
-	def in_prop_rc_year?(prop_rc_year)
-
-		range = Range.new( self.class::from_prop_rc(prop_rc_year, 0, 0, 0, 0, 0).ajd, self.class::from_prop_rc(prop_rc_year + 1, 0, 0, 0, 0, 0).ajd, true)
-		range.include? self.ajd
-
-
-	end
-
-
-				
 
 
 	def prop_rc_year_day
@@ -459,9 +475,6 @@ class RDateTime < DateTime
 		[ @prop_rc_year, @rc_ajd ]
 
 	end
-
-
-
 	def year_ratio
 
 		@rc_ajd = self.rc_ajd
@@ -495,48 +508,6 @@ class RDateTime < DateTime
 	def prop_rc_day
 
 		@prop_rc_year = self.prop_rc_year_day[1]
-
-	end
-
-
-
-
-
-
-	def to_jd
-		@day = self.jd
-		@offset = self.offset
-		@secs = self.sec + 60 * ( self.min + 60 * self.hour )
-		@time = Rational( @secs, 24 * 60 * 60 )
-		@jd = @day + @time
-		[@jd, @offset]
-	end
-
-
-
-	def to_rc_jp
-
-		self.class::in_jp(year, month, day, hour, minute)
-
-	end
-
-
-
-
-
-	def to_prop_rc_jp
-
-		self.class::in_jp(self.prop_rc_year, self.prop_rc_month, self.prop_rc_monthday, self.rc_hour, self.rc_minute)
-
-	end
-
-
-
-	def to_prop_rc
-
-		@ajd = self.ajd
-		@rc_ajd = self.rc_ajd
-		@prop_rc = self.class::rc_ajd_to_prop_rc(@rc_ajd)
 
 	end
 
@@ -598,6 +569,67 @@ class RDateTime < DateTime
 		@hour = @time[3..4].to_i
 
 	end
+
+
+	#
+	# small methods
+	#
+
+
+
+	def in_prop_rc_year?(prop_rc_year)
+
+		range = Range.new( self.class::from_prop_rc(prop_rc_year, 0, 0, 0, 0, 0).ajd, self.class::from_prop_rc(prop_rc_year + 1, 0, 0, 0, 0, 0).ajd, true)
+		range.include? self.ajd
+
+
+	end
+
+
+
+	#
+	# outputer
+	#
+
+
+
+	def to_jd
+		@day = self.jd
+		@offset = self.offset
+		@secs = self.sec + 60 * ( self.min + 60 * self.hour )
+		@time = Rational( @secs, 24 * 60 * 60 )
+		@jd = @day + @time
+		[@jd, @offset]
+	end
+
+
+
+	def to_rc_jp
+
+		self.class::in_jp(year, month, day, hour, minute)
+
+	end
+
+
+
+	def to_prop_rc_jp
+
+		self.class::in_jp(self.prop_rc_year, self.prop_rc_month, self.prop_rc_monthday, self.rc_hour, self.rc_minute)
+
+	end
+
+
+
+	def to_prop_rc
+
+		@ajd = self.ajd
+		@rc_ajd = self.rc_ajd
+		@prop_rc = self.class::rc_ajd_to_prop_rc(@rc_ajd)
+
+	end
+
+
+
 
 		
 
