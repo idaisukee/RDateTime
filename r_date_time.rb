@@ -222,12 +222,15 @@ class RDateTime < DateTime
 		def prop_rc_parse(str)
 
 			array = str.split(':')
+			type = Array.new
+
 			case array.size
 
 				when 1
 				if str[-1] == ':' then
 					prop_rc_year = array[0].to_i
 					prop_rc_day = 0
+					type << 'year'
 				end
 
 				when 2
@@ -235,16 +238,26 @@ class RDateTime < DateTime
 				if str[0] == ':' then
 					prop_rc_year = self.now.prop_rc_year
 					prop_rc_day = array[1].to_r
+					type << 'month'
+					type << 'day'
 				else
 					prop_rc_year = array[0].to_i
 					prop_rc_day = array[1].to_r
+					type << 'year'
+					type << 'month'
+					type << 'day'
 				end
 
+			end
+
+			if /\./.match str then
+				type << 'time'
 			end
 
 			rc_ajd = self::prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
 
 			obj = self::from_rc_ajd(rc_ajd).new_offset(JST)
+			[type, obj]
 		end
 
 
@@ -252,6 +265,8 @@ class RDateTime < DateTime
 		def rc_parse(str)
 
 			array = str.split('T')
+			type = Array.new
+
 			case array.size
 
 			when 1
@@ -259,15 +274,19 @@ class RDateTime < DateTime
 				if /\//.match(real_str) then
 					date = real_str
 					time = '0'
+					type << 'date'
 				else
 					if /./.match(real_str) then
 						date = [self.now.prop_rc_year + 1, self.now.prop_rc_month + 1, self.now.prop_rc_monthday + 1].join('/')
 						time = real_str
+						type << 'time'
 					end
 				end
 			when 2
 				date = array[0]
 				time = array[1]
+				type << 'date'
+				type << 'time'
 			end
 			
 			date_array = date.split('/')
@@ -278,10 +297,16 @@ class RDateTime < DateTime
 				rc_year = self.now.prop_rc_year + 1
 				rc_month = date_array[0].to_i
 				rc_monthday = date_array[1].to_i
+				type << 'month'
+				type << 'monthday'
 			when 3
 				rc_year = date_array[0].to_i
 				rc_month = date_array[1].to_i
 				rc_monthday = date_array[2].to_i
+				type << 'year'
+				type << 'month'
+				type << 'monthday'
+
 			end
 			
 			prop_rc_year = rc_year - 1
@@ -293,12 +318,51 @@ class RDateTime < DateTime
 			rc_ajd = self::prop_rc_year_to_past_days(prop_rc_year) + prop_rc_day
 
 			obj = self::from_rc_ajd(rc_ajd).new_offset(JST)
+			[type, obj]
 		end
 
 
 
 		def g_parse(str)
+
+			array = str.split('T')
+			type = Array.new
+
+			case array.size
+
+			when 1
+				real_str = array[0]
+				if /\//.match(real_str) then
+					date = real_str
+					type << 'date'
+				else
+					if /:/.match(real_str) then
+						date = [self.now.year, self.now.month, self.now.day].join('/')
+						type << 'time'
+					end
+				end
+			when 2
+				date = array[0]
+				type << 'date'
+				type << 'time'
+			end
+			
+			date_array = date.split('/')
+
+			case date_array.size
+
+			when 2
+				type << 'month'
+				type << 'monthday'
+			when 3
+				type << 'year'
+				type << 'month'
+				type << 'monthday'
+
+			end
+
 			obj = (self::parse(str) - JST).new_offset(JST)
+			[type, obj]
 		end
 
 		def r_parse(str)
