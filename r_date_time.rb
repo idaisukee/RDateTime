@@ -453,6 +453,17 @@ class RDateTime < DateTime
 
 
 
+	def r_jd
+		@day = self.jd
+		@offset = self.offset
+		@secs = self.sec + 60 * ( self.min + 60 * self.hour )
+		@time = Rational( @secs, 24 * 60 * 60 )
+		@jd = @day + @time
+		[@jd, @offset]
+	end
+
+
+
 	def rc_ajd
 
 		self.ajd - RC_EPOCH.ajd
@@ -593,14 +604,6 @@ class RDateTime < DateTime
 
 
 
-	def to_jd
-		@day = self.jd
-		@offset = self.offset
-		@secs = self.sec + 60 * ( self.min + 60 * self.hour )
-		@time = Rational( @secs, 24 * 60 * 60 )
-		@jd = @day + @time
-		[@jd, @offset]
-	end
 
 
 
