@@ -68,11 +68,11 @@ class TC < Test::Unit::TestCase
 
 	def test_from_jd
 		m = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(9, 24))
-		jda = m.to_jd
+		jda = m.r_jd
 		assert_equal(m, RDateTime::from_jd(jda))
 
 		n = RDateTime.new(2016, 6, 27, 13, 0, 0, Rational(0, 24))
-		jda = n.to_jd
+		jda = n.r_jd
 		assert_equal(n, RDateTime::from_jd(jda))
 
 		o = RDateTime.jd(0)
@@ -202,8 +202,8 @@ class TC < Test::Unit::TestCase
 
 	def test_to_jd
 		m = RDateTime.new(2016, 6, 29, 8, 0, 0, Rational(9, 24))
-		j = m.to_jd[0].floor
-		o = m.to_jd[1]
+		j = m.r_jd[0].floor
+		o = m.r_jd[1]
 		assert_equal(o, Rational(9, 24))
 		assert_equal(j, m.jd)
 	end
