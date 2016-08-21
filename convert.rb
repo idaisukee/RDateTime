@@ -3,7 +3,18 @@ require File.expand_path('../float.rb',  __FILE__)
 
 str = STDIN.gets.strip
 
+array = str.split(' ')
 
-out = RDateTime.parse(str)
+system = array[0]
 
-p out.prop_rc_day.to_f.e_floor(3).to_f
+case system
+when 'g'
+when 'pr'
+end
+
+
+out = RDateTime.r_parse(str)
+
+puts out
+
+
