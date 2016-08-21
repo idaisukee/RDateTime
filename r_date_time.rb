@@ -330,10 +330,26 @@ class RDateTime < DateTime
 			[obj.hour, obj.min]
 		end
 
-	end 
+
+
+		def date_conv_g_pr(str)
+
+			obj = self::g_parse(str)
+			[obj.prop_rc_year, obj.prop_rc_day]
+
+		end
 
 
 
+		def date_conv_pr_g(str)
+
+			real_str = ':' + str
+			obj = self::prop_rc_parse(real_str)
+			[obj.year, obj.month, obj.day]
+
+		end
+
+	end
 
 
 	def rc_ajd
@@ -341,6 +357,7 @@ class RDateTime < DateTime
 		self.ajd - RC_EPOCH.ajd
 
 	end
+
 
 
 
