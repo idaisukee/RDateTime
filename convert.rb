@@ -46,7 +46,13 @@ when 'pr'
 	date_str = date.join('/')
 	time_str = time.join(':')
 	out = [date_str, time_str]
-	out_str = out.join('T')
+	if out.any? { |i|
+			i == ''
+		} then
+		out_str = out.join('')
+	else
+		out_str = out.join('T')
+	end
 	puts out_str
 
 end

@@ -231,6 +231,11 @@ class RDateTime < DateTime
 					prop_rc_year = array[0].to_i
 					prop_rc_day = 0
 					type << 'year'
+				else
+					time = str.to_f
+					prop_rc_year = self.now.prop_rc_year
+					prop_rc_day = self.now.prop_rc_day.floor + time
+					type << time
 				end
 
 				when 2
@@ -332,14 +337,12 @@ class RDateTime < DateTime
 
 			when 1
 				real_str = array[0]
-				if /\//.match(real_str) then
+				if /:/.match(real_str) then
+					date = [self.now.year, self.now.month, self.now.day].join('/')
+					type << 'time'
+				else
 					date = real_str
 					type << 'date'
-				else
-					if /:/.match(real_str) then
-						date = [self.now.year, self.now.month, self.now.day].join('/')
-						type << 'time'
-					end
 				end
 			when 2
 				date = array[0]
@@ -351,17 +354,22 @@ class RDateTime < DateTime
 
 			case date_array.size
 
+			when 1
+				type << 'year'
+				year = date_array[0].to_i
+				obj = self.new(year, 1, 1, 0, 0, 0, JST)
 			when 2
 				type << 'month'
 				type << 'monthday'
+				obj = (self::parse(str) - JST).new_offset(JST)
 			when 3
 				type << 'year'
 				type << 'month'
 				type << 'monthday'
+				obj = (self::parse(str) - JST).new_offset(JST)
 
 			end
 
-			obj = (self::parse(str) - JST).new_offset(JST)
 			[type, obj]
 		end
 
