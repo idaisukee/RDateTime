@@ -156,6 +156,8 @@ class RDateTime < DateTime
 
 		end
 
+
+
 		def rc_ajd_to_ajd(rc_ajd)
 			ajd = rc_ajd + self::RC_EPOCH.ajd
 		end
