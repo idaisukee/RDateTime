@@ -403,6 +403,21 @@ class RDateTime < DateTime
 		end
 
 
+
+		def g_time_parse(str)
+			array = str.split(':')
+			hour = array[0].to_i
+			min = array[1].to_i
+			arg = ['hour', 'min']
+			now = self.now
+			year = now.year
+			month = now.month
+			monthday = now.day
+			sec = now.sec
+			obj = self::new(year, month, monthday, hour, min, sec, JST)
+			[obj, arg]
+		end
+		
 		#
 		# converter
 		#
