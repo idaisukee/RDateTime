@@ -435,6 +435,22 @@ class RDateTime < DateTime
 
 
 
+		def g_2_piece_date_parse(str)
+			array = str.split('/')
+			now = self.now
+			year = now.year
+			month = array[0].to_i
+			monthday = array[1].to_i
+			arg = ['month', 'day']
+			hour = now.hour
+			min = now.min
+			sec = now.sec
+			obj = self::new(year, month, monthday, hour, min, sec, JST)
+			[obj, arg]
+		end
+
+
+
 		#
 		# converter
 		#
