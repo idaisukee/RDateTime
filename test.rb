@@ -67,3 +67,6 @@ p n.rc_minute
 print n.to_prop_rc_jp
 puts
 p RDateTime.g_time_parse('11:30')
+p RDateTime.g_3_piece_date_parse('2000/10/10')
+p RDateTime.g_2_piece_date_parse('10/10')
+
