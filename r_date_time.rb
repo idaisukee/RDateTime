@@ -452,6 +452,25 @@ class RDateTime < DateTime
 
 
 		#
+		# coparser
+		#
+
+		def implement(arg)
+
+			whole = ['year', 'month', 'day', 'hour', 'min', 'sec']
+			no_arg = whole - arg
+			now = self.now
+			implement = Hash.new
+			no_arg.each do |i|
+				implement[i] = now.send(i)
+			end
+
+			implement
+		end
+
+
+		
+		#
 		# postparser
 		#
 
