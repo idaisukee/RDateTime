@@ -452,6 +452,22 @@ class RDateTime < DateTime
 
 
 		#
+		# postparser
+		#
+
+
+		def merge(array1, array2)
+
+			whole = ['year', 'month', 'day', 'hour', 'min', 'sec']
+
+			arg1 = array1[1]
+			arg2 = array2[2]
+
+			merged_arg = arg1 + arg2
+
+		end
+
+		#
 		# converter
 		#
 
