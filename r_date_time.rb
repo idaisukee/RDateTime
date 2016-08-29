@@ -230,6 +230,29 @@ class RDateTime < DateTime
 
 
 
+		def from_g_hash(hash)
+			year = hash['year']
+			month = hash['month']
+			day = hash['day']
+			hour = hash['hour']
+			min = hash['min']
+			sec = hash['sec']
+			offset = hash['offset']
+
+			self::new(year, month, day, hour, min, sec, offset)
+
+		end
+
+
+
+		def from_g_partial_hash(hash)
+			arg = hash.keys
+			supplement = self::supplement(arg)
+			full_hash = hash.merge(supplement)
+			self::from_g_hash(full_hash)
+		end
+
+		
 		#
 		# parser
 		#
@@ -457,7 +480,7 @@ class RDateTime < DateTime
 
 		def supplement(arg)
 
-			whole = ['year', 'month', 'day', 'hour', 'min', 'sec']
+			whole = ['year', 'month', 'day', 'hour', 'min', 'sec', 'offset']
 			no_arg = whole - arg
 			now = self.now
 			supplement = Hash.new

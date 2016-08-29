@@ -70,3 +70,6 @@ p RDateTime.g_time_parse('11:30')
 p RDateTime.g_3_piece_date_parse('2000/10/10')
 p RDateTime.g_2_piece_date_parse('10/10')
 p RDateTime::supplement(['year'])
+p RDateTime::from_g_hash({'year' => 2000, 'month' => 3, 'day' => 3, 'hour' => 3, 'min' => 3, 'sec' => 3, 'offset' => 0})
+p RDateTime::from_g_partial_hash({'year' => 2000,})
+
