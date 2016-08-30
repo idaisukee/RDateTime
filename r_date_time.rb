@@ -15,7 +15,7 @@ class RDateTime < DateTime
 
 	JST = Rational(9, 24)
 
-	attr_accessor :args
+	attr_accessor :args, :supplement
 
 	## object generation cascade
 	# rc
@@ -251,7 +251,8 @@ class RDateTime < DateTime
 			arg = hash.keys
 			supplement = self::supplement(arg)
 			full_hash = hash.merge(supplement)
-			self::from_g_hash(full_hash)
+			obj = self::from_g_hash(full_hash)
+			obj.supplement = supplement
 		end
 
 		
@@ -730,7 +731,14 @@ class RDateTime < DateTime
 
 
 
-		
+	def to_s_supplement
+
+		case self.supplement
+		when ['year']
+			"#{self.year}"
+		end
+			
+	end
 
 
 
