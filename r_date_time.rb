@@ -15,6 +15,8 @@ class RDateTime < DateTime
 
 	JST = Rational(9, 24)
 
+	attr_accessor :args
+
 	## object generation cascade
 	# rc
 	# -> prop_rc
@@ -725,7 +727,6 @@ class RDateTime < DateTime
 		@prop_rc = self.class::rc_ajd_to_prop_rc(@rc_ajd)
 
 	end
-
 
 
 
