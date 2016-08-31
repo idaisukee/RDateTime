@@ -785,14 +785,16 @@ class RDateTime < DateTime
 
 
 
-	def str_prop_rc_day
+	def str_point_3_digits_prop_rc_day
 
-		"#{self.prop_rc_day}"
+		@out = self.prop_rc_day.to_f.e_floor(3).to_f
+		"#{@out}"
 
 	end
 
 
 
+	
 	def str_prop_rc_2_piece_date
 
 		"#{self.prop_rc_year}:#{self.prop_rc_day}"
