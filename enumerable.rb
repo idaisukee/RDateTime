@@ -20,9 +20,20 @@ module Enumerable
 			}
 		elsif
 		 self.class == Hash then
-			self.sort_by { |k, v|
+			array = self.sort_by { |k, v|
 				Order[k]
 			}
+			hash = Hash.new
+			array.each do |k, v|
+				hash[k] = v
+			end
+			hash
 		end
 	end
 end
+
+# b = { :year => 3,
+# 			:hour => 5 , :day => 4}
+# p b.arg_sort
+# p b.arg_sort.values
+# p *b

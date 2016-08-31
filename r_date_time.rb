@@ -7,6 +7,7 @@
 
 require 'date'
 require File.expand_path('../float.rb', __FILE__)
+require File.expand_path('../enumerable.rb', __FILE__)
 
 
 class RDateTime < DateTime
