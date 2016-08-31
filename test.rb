@@ -2,7 +2,7 @@ require File.expand_path('../r_date_time.rb',  __FILE__)
 require File.expand_path('../float.rb',  __FILE__)
 
 m = RDateTime.now
-
+p m.prop_rc_int_day
 n = RDateTime.new(2015, 9, 22, 10, 10, 10, Rational(9, 24))
 
 p m.rc_ajd.to_f 
@@ -35,7 +35,7 @@ p 1.23456.e_floor
 p 1.23456.e_floor(3).to_f
 
 p File.expand_path('../float.rb', __FILE__)
-p m.year_ratio.to_f
+#p m.year_ratio.to_f
 
 p m.class::RC_EPOCH
 
@@ -68,14 +68,15 @@ print n.to_prop_rc_jp
 puts
 p RDateTime.g_time_parse('11:30')
 p RDateTime.g_3_piece_date_parse('2000/10/10')
-p RDateTime.g_2_piece_date_parse('10/10')
-p RDateTime::supplement(['year'])
-p RDateTime::from_g_hash({'year' => 2000, 'month' => 3, 'day' => 3, 'hour' => 3, 'min' => 3, 'sec' => 3, 'offset' => 0})
-p RDateTime::from_g_partial_hash({'year' => 2000,})
+#p RDateTime.g_2_piece_date_parse('10/10')
+#p RDateTime::supplement(['year'])
+#p RDateTime::from_g_hash({'year' => 2000, 'month' => 3, 'day' => 3, 'hour' => 3, 'min' => 3, 'sec' => 3, 'offset' => 0})
+#p RDateTime::from_g_partial_hash({'year' => 2000,})
 
-p n.args = 3
-p n.supplement = ['year', 'month', 'day']
-p n.to_s_supplement
+#p n.args = 3
+#p n.supplement = ['year', 'month', 'day']
+#p n.to_s_supplement
 
 
 
+#p n.prop_rc_int_day
