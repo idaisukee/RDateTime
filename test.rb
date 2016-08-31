@@ -73,3 +73,9 @@ p RDateTime::supplement(['year'])
 p RDateTime::from_g_hash({'year' => 2000, 'month' => 3, 'day' => 3, 'hour' => 3, 'min' => 3, 'sec' => 3, 'offset' => 0})
 p RDateTime::from_g_partial_hash({'year' => 2000,})
 
+p n.args = 3
+p n.supplement = ['year', 'month', 'day']
+p n.to_s_supplement
+
+
+
