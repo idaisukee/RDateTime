@@ -731,6 +731,68 @@ class RDateTime < DateTime
 
 
 
+	# 
+	# string
+	#
+
+
+
+	def g_year
+
+		"#{self.year}"
+
+	end
+
+
+
+	def g_3_piece_date
+
+		"#{self.year}/#{self.month}/#{self.day}"
+
+	end
+
+
+
+	def g_2_piece_date
+
+		"#{self.month}/#{self.day}"
+
+	end
+
+
+
+	def g_time
+
+		"#{self.hour}:#{self.min}"
+
+	end
+
+
+
+	def prop_rc_year
+
+		"#{self.prop_rc_year}"
+
+	end
+
+
+
+	def prop_rc_day
+
+		"#{self.prop_rc_day}"
+
+	end
+
+
+
+	def prop_rc_2_piece_date
+
+		"#{self.prop_rc_year}:#{self.prop_rc_day}"
+
+	end
+
+end
+	
 	def to_s_supplement
 
 		case self.supplement
