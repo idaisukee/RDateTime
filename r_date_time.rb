@@ -745,7 +745,7 @@ class RDateTime < DateTime
 
 
 
-	def g_year
+	def str_g_year
 
 		"#{self.year}"
 
@@ -753,7 +753,7 @@ class RDateTime < DateTime
 
 
 
-	def g_3_piece_date
+	def str_g_3_piece_date
 
 		"#{self.year}/#{self.month}/#{self.day}"
 
@@ -761,7 +761,7 @@ class RDateTime < DateTime
 
 
 
-	def g_2_piece_date
+	def str_g_2_piece_date
 
 		"#{self.month}/#{self.day}"
 
@@ -769,7 +769,7 @@ class RDateTime < DateTime
 
 
 
-	def g_time
+	def str_g_time
 
 		"#{self.hour}:#{self.min}"
 
@@ -777,7 +777,7 @@ class RDateTime < DateTime
 
 
 
-	def prop_rc_year
+	def str_prop_rc_year
 
 		"#{self.prop_rc_year}"
 
@@ -785,7 +785,7 @@ class RDateTime < DateTime
 
 
 
-	def prop_rc_day
+	def str_prop_rc_day
 
 		"#{self.prop_rc_day}"
 
@@ -793,13 +793,12 @@ class RDateTime < DateTime
 
 
 
-	def prop_rc_2_piece_date
+	def str_prop_rc_2_piece_date
 
 		"#{self.prop_rc_year}:#{self.prop_rc_day}"
 
 	end
 
-end
 	
 	def to_s_supplement
 
