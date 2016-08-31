@@ -241,8 +241,8 @@ class RDateTime < DateTime
 			min = hash['min']
 			sec = hash['sec']
 			offset = hash['offset']
-
-			self::new(year, month, day, hour, min, sec, offset)
+			arg  =  hash.arg_sort.values
+			self::new(*arg)
 
 		end
 
