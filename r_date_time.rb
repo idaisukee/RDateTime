@@ -252,6 +252,7 @@ class RDateTime < DateTime
 			supplement = self::supplement(arg)
 			full_hash = hash.merge(supplement)
 			obj = self::from_g_hash(full_hash)
+			obj.args = hash
 			obj.supplement = supplement
 			obj
 		end

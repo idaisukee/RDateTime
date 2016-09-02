@@ -76,9 +76,8 @@ p RDateTime::from_g_hash({:year => 2000, :day => 3, :month => 4, :hour => 3, :mi
 p RDateTime::from_g_partial_hash({:day => 3, :month => 4, :hour => 3, :min => 3, :sec => 3, :offset => 0})
 
 puts '---------------------'
-p RDateTime::from_g_partial_hash({:year => 2000,})
+p o = RDateTime::from_g_partial_hash({:year => 2000,})
 
-p n.args = 3
 p n.supplement = ['year', 'month', 'day']
 
 
@@ -88,5 +87,6 @@ p n.str_point_3_digit_prop_rc_day
 p n.str_point_3_digit_prop_rc_2_piece_date
 puts '--'
 p n.to_s_args
-p n.supplement
+p o.supplement
+p o.args
 p RDateTime.g_time_parse('11:30')
