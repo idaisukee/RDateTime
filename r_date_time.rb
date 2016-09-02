@@ -234,16 +234,15 @@ class RDateTime < DateTime
 
 
 		def from_g_hash(hash)
-			year = hash['year']
-			month = hash['month']
-			day = hash['day']
-			hour = hash['hour']
-			min = hash['min']
-			sec = hash['sec']
-			offset = hash['offset']
-			arg  =  hash.arg_sort.values
+			year = hash[:year]
+			month = hash[:month]
+			day = hash[:day]
+			hour = hash[:hour]
+			min = hash[:min]
+			sec = hash[:sec]
+			offset = hash[:offset]
+			arg =  hash.arg_sort.values
 			self::new(*arg)
-
 		end
 
 
@@ -254,6 +253,7 @@ class RDateTime < DateTime
 			full_hash = hash.merge(supplement)
 			obj = self::from_g_hash(full_hash)
 			obj.supplement = supplement
+			obj
 		end
 
 		
@@ -435,14 +435,15 @@ class RDateTime < DateTime
 			array = str.split(':')
 			hour = array[0].to_i
 			min = array[1].to_i
-			arg = ['hour', 'min']
+			args = [:hour, :min]
 			now = self.now
 			year = now.year
 			month = now.month
 			monthday = now.day
 			sec = now.sec
 			obj = self::new(year, month, monthday, hour, min, sec, JST)
-			[obj, arg]
+			obj.args = args
+			obj
 		end
 
 
@@ -451,7 +452,7 @@ class RDateTime < DateTime
 			year = array[0].to_i
 			month = array[1].to_i
 			monthday = array[2].to_i
-			arg = ['year', 'month', 'day']
+			arg = [:year, :month, :day]
 			now = self.now
 			hour = now.hour
 			min = now.min
@@ -484,7 +485,7 @@ class RDateTime < DateTime
 
 		def supplement(arg)
 
-			whole = ['year', 'month', 'day', 'hour', 'min', 'sec', 'offset']
+			whole = [:year, :month, :day, :hour, :min, :sec, :offset]
 			no_arg = whole - arg
 			now = self.now
 			supplement = Hash.new
@@ -803,13 +804,9 @@ class RDateTime < DateTime
 	end
 
 	
-	def to_s_supplement
+	def to_s_args
 
-		case self.supplement
-		when ['year']
-			"#{self.year}"
-		end
-			
+		p self.args
 	end
 
 
