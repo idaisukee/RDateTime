@@ -42,8 +42,9 @@ when 'pr'
 	if type.include? 'time' then
 		time << obj.hour 
 		time << obj.min
+		time << obj.sec
 	end
-	date_str = date.join('/')
+	date_str = date.join('-')
 	time_str = time.join(':')
 	out = [date_str, time_str]
 	if out.any? { |i|
@@ -51,7 +52,7 @@ when 'pr'
 		} then
 		out_str = out.join('')
 	else
-		out_str = out.join('T')
+		out_str = out.join('T') + '+09:00'
 	end
 	puts out_str
 
