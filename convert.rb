@@ -1,6 +1,12 @@
 require File.expand_path('../r_date_time.rb',  __FILE__)
 require File.expand_path('../float.rb',  __FILE__)
 
+require 'optparse'
+
+available_opts = 'c' # c for continuous.
+params = ARGV.getopts(available_opts)
+
+
 str = STDIN.gets.strip
 
 array = str.split(' ')
@@ -16,19 +22,27 @@ out = Array.new
 
 case system
 when 'g'
-	if type.include? 'year' then
-		out << obj.prop_rc_year 
+	if params['c'] == true then
+
+		puts obj.rc_ajd.to_f
 	else
-		out << ''
+		
+		if type.include? 'year' then
+			out << obj.prop_rc_year 
+		else
+			out << ''
+		end
+		day = obj.prop_rc_day
+		if type.include? 'time' then
+			out_day = day.to_f
+		else
+			out_day = day.floor
+		end
+		out << out_day
+		puts out.join(':')
+
 	end
-	day = obj.prop_rc_day
-	if type.include? 'time' then
-		out_day = day.to_f
-	else
-		out_day = day.floor
-	end
-	out << out_day
-	puts out.join(':')
+
 
 when 'pr'
 
