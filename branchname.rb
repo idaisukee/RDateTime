@@ -3,7 +3,7 @@ require File.expand_path('../float.rb',  __FILE__)
 
 
 
-m = RDateTime.now
+m = RDateTime.now.new_offset(Rational(9, 24))
 
 prop_rc_year = m.prop_rc_year
 str_prop_rc_day = sprintf('%3.3f', m.prop_rc_day.to_f.e_floor(3).to_f)
