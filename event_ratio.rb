@@ -1,8 +1,11 @@
 require File.expand_path('../r_date_time.rb',  __FILE__)
 require File.expand_path('../float.rb',  __FILE__)
 
-start = RDateTime::prop_rc_parse('224:61.125')[1]
-finish = RDateTime::prop_rc_parse('224:61.4166')[1]
+arg_start = ARGV[0].strip.to_f
+arg_finish = ARGV[1].strip.to_f
+
+start = RDateTime::from_rc_ajd(arg_start)
+finish = RDateTime::from_rc_ajd(arg_finish)
 
 length = finish - start
 
